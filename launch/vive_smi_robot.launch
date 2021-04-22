@@ -6,19 +6,17 @@
 
   <node name="vive_node" pkg="vive_ros" type="vive_node" launch-prefix="$(find vive_ros)/scripts/find_steam_runtime.sh" output="screen" required="true"/>
 
-
   <arg
     name="model" />
   <arg
     name="gui"
     default="True" />    
     
-  <param
+  <!--param
     name="robot_description"
-    textfile="$(find aubo_description)/urdf/aubo_i3_3R.urdf" />  
+    textfile="$(find aubo_description)/urdf/aubo_i3_3R.urdf" /-->  
     
-  <group ns = "robot1">
-    
+  <group ns = "robot1">    
     <param
       name="robot_description"
       textfile="$(find aubo_description)/urdf/aubo_i3_3R.urdf" />
@@ -64,7 +62,8 @@
     name="rviz"
     pkg="rviz"
     type="rviz"
-    args="-d $(find aubo_description)/urdf/urdf.rviz" />
+    args="-d $(find aubo_description)/urdf/aubo_rm_control.rviz" />
+    
   <node
    name="talker"
    pkg="vive_ros"
