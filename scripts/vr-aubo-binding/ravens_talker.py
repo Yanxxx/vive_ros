@@ -252,7 +252,7 @@ def InBound(msg, limits):
 if __name__ == '__main__':
 
     vrb = ViveRobotBridge('/vive/controller_LHR_FFFF3F47/joy')
-    vrb_orientation = ViveRobotBridge('/vive/controller_LHR_FFF43D45/joy','tarori_pub')
+#    vrb_orientation = ViveRobotBridge('/vive/controller_LHR_FFF43D45/joy','tarori_pub')
 #    vrb.__init__()
     
     rospy.init_node('vive_listener')
@@ -307,7 +307,12 @@ if __name__ == '__main__':
                 msg.translation.y = trans.transform.translation.y-pre_position[1]
                 msg.translation.z = trans.transform.translation.z-pre_position[2]
                 
-                msg = InBound(msg, limits)                
+                msg.rotation.x = trans.transform.rotation.x
+                msg.rotation.y = trans.transform.rotation.y
+                msg.rotation.z = trans.transform.rotation.z
+                msg.rotation.w = trans.transform.rotation.w
+                
+#                msg = InBound(msg, limits)                
                 print(msg.translation)                
                 vrb.pub.publish(msg)
                 
@@ -317,13 +322,13 @@ if __name__ == '__main__':
             
         temp_flag = vrb.offset_flag
         
-        if vrb_orientation.offset_flag == 1:
-            msg_ori.rotation.x = trans_ori.transform.rotation.x
-            msg_ori.rotation.y = trans_ori.transform.rotation.y
-            msg_ori.rotation.z = trans_ori.transform.rotation.z
-            msg_ori.rotation.w = trans_ori.transform.rotation.w
-            print(msg_ori.rotation)                
-            vrb_orientation.pub.publish(msg_ori)
+#        if vrb_orientation.offset_flag == 1:
+#            msg_ori.rotation.x = trans_ori.transform.rotation.x
+#            msg_ori.rotation.y = trans_ori.transform.rotation.y
+#            msg_ori.rotation.z = trans_ori.transform.rotation.z
+#            msg_ori.rotation.w = trans_ori.transform.rotation.w
+#            print(msg_ori.rotation)                
+#            vrb_orientation.pub.publish(msg_ori)
                 
         rate.sleep()
 #        if vrb_orientation.offset_flag == 1:

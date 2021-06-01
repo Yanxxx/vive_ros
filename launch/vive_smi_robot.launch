@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
 
-  <rosparam param="/vive/world_offset">[0, 0, 1.265]</rosparam>
+  <rosparam param="/vive/world_offset">[-2.2, -1.6, 1.265]</rosparam>
   <rosparam param="/vive/world_yaw">0.0</rosparam>
 
   <node name="vive_node" pkg="vive_ros" type="vive_node" launch-prefix="$(find vive_ros)/scripts/find_steam_runtime.sh" output="screen" required="true"/>
@@ -19,7 +19,7 @@
   <group ns = "robot1">    
     <param
       name="robot_description"
-      textfile="$(find aubo_description)/urdf/aubo_i3_3R.urdf" />
+      textfile="$(find aubo_description)/urdf/aubo_i3_soft_restrict.urdf" />
     <param
       name="use_gui"
       value="$(arg gui)" />
@@ -40,7 +40,7 @@
     
     <param
       name="robot_description"
-      textfile="$(find aubo_description)/urdf/aubo_i3_3R.urdf" />
+      textfile="$(find aubo_description)/urdf/aubo_i3_soft_restrict.urdf" />
     <param
       name="use_gui"
       value="$(arg gui)" />
