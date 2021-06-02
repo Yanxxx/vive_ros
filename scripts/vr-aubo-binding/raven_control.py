@@ -174,11 +174,11 @@ def main(unused_argv):
             ee_orientation = p.getLinkState(env.ur5, env.ee_tip)[5]
 
             vrb.trigger_pressed_event = 0
-            print("I--trigger pressed!\n")
+#            print("I--trigger pressed!\n")
 
         if vrb.trigger_released_event == 1:
             vrb.trigger_released_event = 0
-            print("O--trigger released!\n") 
+#            print("O--trigger released!\n") 
 
         if vrb.trigger_current_status == 1:
            

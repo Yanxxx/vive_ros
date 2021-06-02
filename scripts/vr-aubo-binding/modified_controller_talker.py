@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # Software License Agreement (BSD License)
-# Auther Yan Li, UTK, 2021
+#
+# Copyright (c) 2008, Willow Garage, Inc.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -284,6 +285,8 @@ if __name__ == '__main__':
     msg_ori.translation.y = 0
     msg_ori.translation.z = 0
     
+    controller_offset = kdl.Vector(0, 0, -0.2)
+    
     while not rospy.is_shutdown():
         try:
             trans = tfBuffer.lookup_transform('world', 'controller_LHR_FFFF3F47', rospy.Time())
@@ -311,9 +314,20 @@ if __name__ == '__main__':
                 print(msg.translation)                
                 vrb.pub.publish(msg)
                 
-                pre_position[0]=trans.transform.translation.x
+#                pre_position[0]=trans.transform.translation.x
+#                pre_position[1]=trans.transform.translation.y
+#                pre_position[2]=trans.transform.translation.z
+                
+                R = kdl.Quaternion(trans_ori.transform.rotation.x,trans_ori.transform.rotation.y,
+                                   trans_ori.transform.rotation.z, trans_ori.transform.rotation.w)
+                
+                rotated_offset = R * controller_offset
+                
+                pre_position[0]=trans.transform.translation.x + rotated_offset
                 pre_position[1]=trans.transform.translation.y
                 pre_position[2]=trans.transform.translation.z
+                
+                
             
         temp_flag = vrb.offset_flag
         
