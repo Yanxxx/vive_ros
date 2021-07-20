@@ -65,9 +65,9 @@
     args="-d $(find aubo_description)/urdf/aubo_rm_control.rviz" />
     
   <node
-   name="controller_translation"
+   name="modified_controller_talker"
    pkg="vive_ros"
-   type="controller_translation.py"/>
+   type="modified_controller_talker.py"/>
 
 </launch>
 

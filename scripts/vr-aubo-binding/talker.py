@@ -43,7 +43,6 @@ import tf
 import roslib
 import tf2_ros
 import numpy as np
-import PyKDL as kdl
 
 from pyquaternion import Quaternion
 
