@@ -88,7 +88,7 @@ if __name__ == '__main__':
 #            continue
 
         br.sendTransform((0,0,0.2),
-             (1, 0, 0, 0),
+             (0.707, -0.707, 0, 0),
              rospy.Time.now(),
              'translation_tf',
              "controller_LHR_FFFF3F47")

@@ -68,6 +68,11 @@
    name="controller_translation"
    pkg="vive_ros"
    type="controller_translation.py"/>
+   
+  <!--node
+   name="controller_translation_ravens"
+   pkg="vive_ros"
+   type="controller_translation_ravens.py"/-->
 
 </launch>
 
